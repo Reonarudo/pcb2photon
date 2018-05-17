@@ -9,5 +9,12 @@
 
 import Foundation
 
+let converter = Converter()
+
+if CommandLine.argc < 2 {
+    //TODO: Handle interactive mode
+} else {
+    converter.staticMode()
+}
 
 
