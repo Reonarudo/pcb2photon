@@ -26,7 +26,8 @@
 		229D196820AD797B003E75C6 /* pcb2photon */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = pcb2photon; sourceTree = BUILT_PRODUCTS_DIR; };
 		229D196B20AD797B003E75C6 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		229D197220AD7C6A003E75C6 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		229D197320AD83BE003E75C6 /* activityDiagram.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = activityDiagram.png; sourceTree = "<group>"; };
+		229D197420AD9905003E75C6 /* activityDiagram.pltuml */ = {isa = PBXFileReference; lastKnownFileType = text; path = activityDiagram.pltuml; sourceTree = "<group>"; };
+		229D197520AD99C5003E75C6 /* activityDiagram.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = activityDiagram.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,8 +44,9 @@
 		229D195F20AD797A003E75C6 = {
 			isa = PBXGroup;
 			children = (
+				229D197420AD9905003E75C6 /* activityDiagram.pltuml */,
 				229D197220AD7C6A003E75C6 /* README.md */,
-				229D197320AD83BE003E75C6 /* activityDiagram.png */,
+				229D197520AD99C5003E75C6 /* activityDiagram.png */,
 				229D196A20AD797B003E75C6 /* pcb2photon */,
 				229D196920AD797B003E75C6 /* Products */,
 			);

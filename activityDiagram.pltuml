@@ -1,0 +1,32 @@
+@startuml
+
+start
+
+#C02F1D:Read inputFile names;
+if (Files exist?) then (true)
+    #C02F1D:Read optional parameters;
+    if (Has optional parameters?) then (true)
+        if (Valid parameters) then (true)
+            #C02F1D:Load parameters;
+        else (false)
+            #C02F1D:Throw error X;
+            stop
+        endif
+    else (false)
+        #C02F1D:Load default parameters;
+    endif
+else (false)
+    #C02F1D:Throw error X;
+    stop
+endif
+while (Has input files to process?) is (true)
+    :Load inputFile;
+    if (Is supported file format) then (true)
+        :Convert to .photon;
+    else (false)
+        :Throw error X;
+    endif
+endwhile (no more files)
+stop
+
+@enduml
