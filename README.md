@@ -19,20 +19,20 @@ Command parameters:
 
 *output_filename*     optional output file name, if no name is provided the input file name will be used.
 
- - t [threshold-value]       Threshold that defines the value cap for non-monocromatic images.
-- a [alignment-options]      Image alignment options within the .photon image size.
-    c       Centering on screen;
-    ul      Upper left corner;
-    ll      Lower left corner;
-    ur      Upper right corner;
-    lr      Lower right corner;
-- s [image-scaling]       Defines the image stretching options.
-    o       original scale;
-    v       vertical fit;
-    h       horizontal fit;
-    f       stretch to fit;
-    n [value]       scale by a factor of __value__ (1 decimal value)
-- pcb [thickness]        PCB thickness value (needed to lift the print bed)
-- e  [exposure-time]     Exposure time in seconds
+* t [threshold-value]       Threshold that defines the value cap for non-monocromatic images.
+* a [alignment-options]      Image alignment options within the .photon image size.
+    * c       Centering on screen;
+    * ul      Upper left corner;
+    * ll      Lower left corner;
+    * ur      Upper right corner;
+    * lr      Lower right corner;
+* s [image-scaling]       Defines the image stretching options.
+    * o       original scale;
+    * v       vertical fit;
+    * h       horizontal fit;
+    * f       stretch to fit;
+    * n [value]       scale by a factor of __value__ (1 decimal value)
+* pcb [thickness]        PCB thickness value (needed to lift the print bed)
+* e  [exposure-time]     Exposure time in seconds
 
 ![Activity Diagram](activityDiagram.png "Current development stage in red.")
