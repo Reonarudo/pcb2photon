@@ -59,11 +59,33 @@ enum ImageAlignment: String {
     }
 }
 
+enum ImageScaling: String {
+    case original       = "o"
+    case verticalFit    = "v"
+    case horizontalFit  = "h"
+    case stretchFit     = "f"
+    case scaleBy        = "n"
+    case unknown
+    
+    init(value: String) {
+        switch value {
+        case "o": self  = .original
+        case "v": self  = .verticalFit
+        case "h": self  = .horizontalFit
+        case "f": self  = .stretchFit
+        case "n": self  = .scaleBy
+            
+        default: self   = .unknown
+        }
+    }
+}
+
 struct FileOptions {
     //                              defaults:
     var threshold : Float           = 0.5
     var alignment : ImageAlignment  = .center
-    var scaling : Float             = 1.0
+    var scaling : ImageScaling      = .original
+    var scale : Float?              = nil
     var pcbThickness : Float        = 1.6 //mm
     var output : [String]           = []
     var exposure : Float            = 5.0 //seconds
@@ -76,14 +98,14 @@ class Converter{
     
     func staticMode() {
         let argCount = CommandLine.argc
-        var i = 0
+        var i = 1
         while i < argCount {
             let argument = CommandLine.arguments[i]
             if argument.first == "-"{
                 let (option, value) = getOption(String(argument.dropFirst().first!))
                 switch option {
                     case .threshold:
-                        guard i+1 < argCount, let val :Float = Float(CommandLine.arguments[i+1]), val<0, val>1 else{
+                        guard i+1 < argCount, let val :Float = Float(CommandLine.arguments[i+1]), val>0, val<1 else{
                             consoleIO.writeMessage("Error 01: Invalid value for \(option).")
                             break
                         }
@@ -102,12 +124,26 @@ class Converter{
                         self.conversionOptions.alignment = val
                         i+=1
                     case .scaling:
-                        guard i+1 < argCount, let val :Float = Float(CommandLine.arguments[i+1]) else{
+                        guard i+1 < argCount else{
                             consoleIO.writeMessage("Error 01: Invalid value for \(option).")
                             break
                         }
-                        self.conversionOptions.scaling = val
-                        i+=1
+                        let val :ImageScaling = ImageScaling(value: CommandLine.arguments[i+1])
+                        guard val != .unknown else{
+                            consoleIO.writeMessage("Error 01: Invalid value for \(option).")
+                            break
+                        }
+                        
+                        if val != .scaleBy {
+                            self.conversionOptions.scaling = val
+                            i+=1
+                        }else{
+                            guard i+1 < argCount, let val :Float = Float(CommandLine.arguments[i+1]), val>0, val<1 else{
+                                consoleIO.writeMessage("Error 01: Invalid value for \(option).")
+                                break
+                            }
+                        }
+                    
                     case .pcbThickness:
                         guard i+1 < argCount, let val :Float = Float(CommandLine.arguments[i+1]), val>0 else{
                             consoleIO.writeMessage("Error 01: Invalid value for \(option).")
@@ -116,7 +152,7 @@ class Converter{
                         self.conversionOptions.pcbThickness = val
                         i+=1
                     case .output:
-                        guard filesToConvert.count<1 else{
+                        guard filesToConvert.count>0 else{
                             consoleIO.writeMessage("Error 02: No input files specified.")
                             break
                         }
@@ -124,6 +160,7 @@ class Converter{
                         i+=1
                         while i < min(filesToConvert.count, Int(argCount)){
                             newFileNames.append(CommandLine.arguments[i])
+                            i+=1
                         }
                     case .exposure:
                         guard i+1 < argCount, let val :Float = Float(CommandLine.arguments[i+1]), val>0 else{
@@ -136,7 +173,6 @@ class Converter{
                         consoleIO.writeMessage("Unknown option \(value)")
                         consoleIO.printUsage()
                 }
-                
             }else{
                 filesToConvert.append(argument)
             }
