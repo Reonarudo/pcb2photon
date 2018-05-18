@@ -39,4 +39,4 @@ Command parameters:
 * -o [output_filename [output_filename2 [...]] Specify output file names, if no name are provided the input file name will be used.
 * -h Displays this information
 
-![Activity Diagram](activityDiagram.png "Current development stage in red.")
+![Activity Diagram](https://www.planttext.com/plantuml/img/TP8nJyGm38Nt_0fBBBq50ICTE7Je118JGeZL8guQAOqZn-NWtzEabElHNfQcydlFoUTiaw9ettbZoiwOsnT22ox4NlVE4mJiADN6DL3b_mJqvPBURK1R2b2fzBGnCApHo54T1_GGKGQdaWpcNCu1ZvZM12jXa-CDlRCpwRgoj7zcj8kkUP5F15M3m-UVvRKLFW29iDGdbQGSZ_vWNMFE9esDBJNOUrqSO3GlZClMfUMeFhGPVA5LvW1D0QyCKVY3KWRcqXp2nUxgPd_zC1xbRtP7y4y9KXyZYv8jQT2mTAZhE4_IPcfeCLXFCrQJyZv6_tsyEtIzOXvpMaft73v9DD_cChQi7EhpR2VJZ1Qydu0DzfTMOEXOQ6IrCGMdsGxr_BX_0000 "Current in development stage marked in red.")

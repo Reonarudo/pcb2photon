@@ -10,6 +10,8 @@
 		229D196C20AD797B003E75C6 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229D196B20AD797B003E75C6 /* main.swift */; };
 		229D197720AD9CC3003E75C6 /* ConsoleIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229D197620AD9CC3003E75C6 /* ConsoleIO.swift */; };
 		229D197920AD9EB3003E75C6 /* Converter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229D197820AD9EB3003E75C6 /* Converter.swift */; };
+		229D197B20AE0193003E75C6 /* ConverterUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229D197A20AE0193003E75C6 /* ConverterUtil.swift */; };
+		229D197D20AF11BF003E75C6 /* ImageFileDecoders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 229D197C20AF11BF003E75C6 /* ImageFileDecoders.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,9 +31,10 @@
 		229D196B20AD797B003E75C6 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		229D197220AD7C6A003E75C6 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		229D197420AD9905003E75C6 /* activityDiagram.pltuml */ = {isa = PBXFileReference; lastKnownFileType = text; path = activityDiagram.pltuml; sourceTree = "<group>"; };
-		229D197520AD99C5003E75C6 /* activityDiagram.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = activityDiagram.png; sourceTree = "<group>"; };
 		229D197620AD9CC3003E75C6 /* ConsoleIO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleIO.swift; sourceTree = "<group>"; };
 		229D197820AD9EB3003E75C6 /* Converter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Converter.swift; sourceTree = "<group>"; };
+		229D197A20AE0193003E75C6 /* ConverterUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterUtil.swift; sourceTree = "<group>"; };
+		229D197C20AF11BF003E75C6 /* ImageFileDecoders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFileDecoders.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,7 +53,6 @@
 			children = (
 				229D197420AD9905003E75C6 /* activityDiagram.pltuml */,
 				229D197220AD7C6A003E75C6 /* README.md */,
-				229D197520AD99C5003E75C6 /* activityDiagram.png */,
 				229D196A20AD797B003E75C6 /* pcb2photon */,
 				229D196920AD797B003E75C6 /* Products */,
 			);
@@ -70,6 +72,8 @@
 				229D196B20AD797B003E75C6 /* main.swift */,
 				229D197620AD9CC3003E75C6 /* ConsoleIO.swift */,
 				229D197820AD9EB3003E75C6 /* Converter.swift */,
+				229D197A20AE0193003E75C6 /* ConverterUtil.swift */,
+				229D197C20AF11BF003E75C6 /* ImageFileDecoders.swift */,
 			);
 			path = pcb2photon;
 			sourceTree = "<group>";
@@ -131,6 +135,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				229D197D20AF11BF003E75C6 /* ImageFileDecoders.swift in Sources */,
+				229D197B20AE0193003E75C6 /* ConverterUtil.swift in Sources */,
 				229D196C20AD797B003E75C6 /* main.swift in Sources */,
 				229D197920AD9EB3003E75C6 /* Converter.swift in Sources */,
 				229D197720AD9CC3003E75C6 /* ConsoleIO.swift in Sources */,
