@@ -1,0 +1,35 @@
+{
+  "": {
+    "swift-dependencies": "/Users/reox/Documents/Git Repos/pcb2photon/.build/x86_64-apple-macosx10.10/debug/pcb2photon.build/master.swiftdeps"
+  },
+  "/Users/reox/Documents/Git Repos/pcb2photon/Sources/pcb2photon/ConsoleIO.swift": {
+    "dependencies": "/Users/reox/Documents/Git Repos/pcb2photon/.build/x86_64-apple-macosx10.10/debug/pcb2photon.build/ConsoleIO.d",
+    "object": "/Users/reox/Documents/Git Repos/pcb2photon/.build/x86_64-apple-macosx10.10/debug/pcb2photon.build/ConsoleIO.swift.o",
+    "swiftmodule": "/Users/reox/Documents/Git Repos/pcb2photon/.build/x86_64-apple-macosx10.10/debug/pcb2photon.build/ConsoleIO~partial.swiftmodule",
+    "swift-dependencies": "/Users/reox/Documents/Git Repos/pcb2photon/.build/x86_64-apple-macosx10.10/debug/pcb2photon.build/ConsoleIO.swiftdeps"
+  },
+  "/Users/reox/Documents/Git Repos/pcb2photon/Sources/pcb2photon/Converter.swift": {
+    "dependencies": "/Users/reox/Documents/Git Repos/pcb2photon/.build/x86_64-apple-macosx10.10/debug/pcb2photon.build/Converter.d",
+    "object": "/Users/reox/Documents/Git Repos/pcb2photon/.build/x86_64-apple-macosx10.10/debug/pcb2photon.build/Converter.swift.o",
+    "swiftmodule": "/Users/reox/Documents/Git Repos/pcb2photon/.build/x86_64-apple-macosx10.10/debug/pcb2photon.build/Converter~partial.swiftmodule",
+    "swift-dependencies": "/Users/reox/Documents/Git Repos/pcb2photon/.build/x86_64-apple-macosx10.10/debug/pcb2photon.build/Converter.swiftdeps"
+  },
+  "/Users/reox/Documents/Git Repos/pcb2photon/Sources/pcb2photon/ConverterUtil.swift": {
+    "dependencies": "/Users/reox/Documents/Git Repos/pcb2photon/.build/x86_64-apple-macosx10.10/debug/pcb2photon.build/ConverterUtil.d",
+    "object": "/Users/reox/Documents/Git Repos/pcb2photon/.build/x86_64-apple-macosx10.10/debug/pcb2photon.build/ConverterUtil.swift.o",
+    "swiftmodule": "/Users/reox/Documents/Git Repos/pcb2photon/.build/x86_64-apple-macosx10.10/debug/pcb2photon.build/ConverterUtil~partial.swiftmodule",
+    "swift-dependencies": "/Users/reox/Documents/Git Repos/pcb2photon/.build/x86_64-apple-macosx10.10/debug/pcb2photon.build/ConverterUtil.swiftdeps"
+  },
+  "/Users/reox/Documents/Git Repos/pcb2photon/Sources/pcb2photon/ImageFileDecoders.swift": {
+    "dependencies": "/Users/reox/Documents/Git Repos/pcb2photon/.build/x86_64-apple-macosx10.10/debug/pcb2photon.build/ImageFileDecoders.d",
+    "object": "/Users/reox/Documents/Git Repos/pcb2photon/.build/x86_64-apple-macosx10.10/debug/pcb2photon.build/ImageFileDecoders.swift.o",
+    "swiftmodule": "/Users/reox/Documents/Git Repos/pcb2photon/.build/x86_64-apple-macosx10.10/debug/pcb2photon.build/ImageFileDecoders~partial.swiftmodule",
+    "swift-dependencies": "/Users/reox/Documents/Git Repos/pcb2photon/.build/x86_64-apple-macosx10.10/debug/pcb2photon.build/ImageFileDecoders.swiftdeps"
+  },
+  "/Users/reox/Documents/Git Repos/pcb2photon/Sources/pcb2photon/main.swift": {
+    "dependencies": "/Users/reox/Documents/Git Repos/pcb2photon/.build/x86_64-apple-macosx10.10/debug/pcb2photon.build/main.d",
+    "object": "/Users/reox/Documents/Git Repos/pcb2photon/.build/x86_64-apple-macosx10.10/debug/pcb2photon.build/main.swift.o",
+    "swiftmodule": "/Users/reox/Documents/Git Repos/pcb2photon/.build/x86_64-apple-macosx10.10/debug/pcb2photon.build/main~partial.swiftmodule",
+    "swift-dependencies": "/Users/reox/Documents/Git Repos/pcb2photon/.build/x86_64-apple-macosx10.10/debug/pcb2photon.build/main.swiftdeps"
+  }
+}

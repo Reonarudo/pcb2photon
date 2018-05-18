@@ -1,0 +1,43 @@
+client:
+  name: swift-build
+tools: {}
+targets:
+  "main": ["/Users/reox/Documents/Git Repos/pcb2photon/.build/x86_64-apple-macosx10.10/debug/pcb2photon","/Users/reox/Documents/Git Repos/pcb2photon/.build/x86_64-apple-macosx10.10/debug/pcb2photon.swiftmodule","<pcb2photon.exe>","<pcb2photon.module>"]
+  "test": ["/Users/reox/Documents/Git Repos/pcb2photon/.build/x86_64-apple-macosx10.10/debug/pcb2photon","/Users/reox/Documents/Git Repos/pcb2photon/.build/x86_64-apple-macosx10.10/debug/pcb2photon.swiftmodule","<pcb2photon.exe>","<pcb2photon.module>"]
+  "pcb2photon.exe": ["/Users/reox/Documents/Git Repos/pcb2photon/.build/x86_64-apple-macosx10.10/debug/pcb2photon","<pcb2photon.exe>"]
+  "pcb2photon.module": ["/Users/reox/Documents/Git Repos/pcb2photon/.build/x86_64-apple-macosx10.10/debug/pcb2photon.swiftmodule","<pcb2photon.module>"]
+default: "main"
+commands: 
+  "<C.pcb2photon.exe>":
+    tool: phony
+    inputs: ["/Users/reox/Documents/Git Repos/pcb2photon/.build/x86_64-apple-macosx10.10/debug/pcb2photon"]
+    outputs: ["<pcb2photon.exe>"]
+
+  "<C.pcb2photon.module>":
+    tool: phony
+    inputs: ["/Users/reox/Documents/Git Repos/pcb2photon/.build/x86_64-apple-macosx10.10/debug/pcb2photon.swiftmodule"]
+    outputs: ["<pcb2photon.module>"]
+
+  "C.pcb2photon.exe":
+    tool: shell
+    description: "Linking ./.build/x86_64-apple-macosx10.10/debug/pcb2photon"
+    inputs: ["/Users/reox/Documents/Git Repos/pcb2photon/.build/x86_64-apple-macosx10.10/debug/pcb2photon.build/ConsoleIO.swift.o","/Users/reox/Documents/Git Repos/pcb2photon/.build/x86_64-apple-macosx10.10/debug/pcb2photon.build/Converter.swift.o","/Users/reox/Documents/Git Repos/pcb2photon/.build/x86_64-apple-macosx10.10/debug/pcb2photon.build/ConverterUtil.swift.o","/Users/reox/Documents/Git Repos/pcb2photon/.build/x86_64-apple-macosx10.10/debug/pcb2photon.build/ImageFileDecoders.swift.o","/Users/reox/Documents/Git Repos/pcb2photon/.build/x86_64-apple-macosx10.10/debug/pcb2photon.build/main.swift.o"]
+    outputs: ["/Users/reox/Documents/Git Repos/pcb2photon/.build/x86_64-apple-macosx10.10/debug/pcb2photon"]
+    args: ["/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc","-target","x86_64-apple-macosx10.10","-sdk","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk","-F","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-g","-L","/Users/reox/Documents/Git Repos/pcb2photon/.build/x86_64-apple-macosx10.10/debug","-o","/Users/reox/Documents/Git Repos/pcb2photon/.build/x86_64-apple-macosx10.10/debug/pcb2photon","-module-name","pcb2photon","-emit-executable","/Users/reox/Documents/Git Repos/pcb2photon/.build/x86_64-apple-macosx10.10/debug/pcb2photon.build/ConsoleIO.swift.o","/Users/reox/Documents/Git Repos/pcb2photon/.build/x86_64-apple-macosx10.10/debug/pcb2photon.build/Converter.swift.o","/Users/reox/Documents/Git Repos/pcb2photon/.build/x86_64-apple-macosx10.10/debug/pcb2photon.build/ConverterUtil.swift.o","/Users/reox/Documents/Git Repos/pcb2photon/.build/x86_64-apple-macosx10.10/debug/pcb2photon.build/ImageFileDecoders.swift.o","/Users/reox/Documents/Git Repos/pcb2photon/.build/x86_64-apple-macosx10.10/debug/pcb2photon.build/main.swift.o"]
+
+  "C.pcb2photon.module":
+    tool: swift-compiler
+    executable: "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/swiftc"
+    module-name: "pcb2photon"
+    module-output-path: "/Users/reox/Documents/Git Repos/pcb2photon/.build/x86_64-apple-macosx10.10/debug/pcb2photon.swiftmodule"
+    inputs: ["/Users/reox/Documents/Git Repos/pcb2photon/Sources/pcb2photon/ConsoleIO.swift","/Users/reox/Documents/Git Repos/pcb2photon/Sources/pcb2photon/Converter.swift","/Users/reox/Documents/Git Repos/pcb2photon/Sources/pcb2photon/ConverterUtil.swift","/Users/reox/Documents/Git Repos/pcb2photon/Sources/pcb2photon/ImageFileDecoders.swift","/Users/reox/Documents/Git Repos/pcb2photon/Sources/pcb2photon/main.swift"]
+    outputs: ["/Users/reox/Documents/Git Repos/pcb2photon/.build/x86_64-apple-macosx10.10/debug/pcb2photon.build/ConsoleIO.swift.o","/Users/reox/Documents/Git Repos/pcb2photon/.build/x86_64-apple-macosx10.10/debug/pcb2photon.build/Converter.swift.o","/Users/reox/Documents/Git Repos/pcb2photon/.build/x86_64-apple-macosx10.10/debug/pcb2photon.build/ConverterUtil.swift.o","/Users/reox/Documents/Git Repos/pcb2photon/.build/x86_64-apple-macosx10.10/debug/pcb2photon.build/ImageFileDecoders.swift.o","/Users/reox/Documents/Git Repos/pcb2photon/.build/x86_64-apple-macosx10.10/debug/pcb2photon.build/main.swift.o","/Users/reox/Documents/Git Repos/pcb2photon/.build/x86_64-apple-macosx10.10/debug/pcb2photon.swiftmodule"]
+    import-paths: ["/Users/reox/Documents/Git Repos/pcb2photon/.build/x86_64-apple-macosx10.10/debug"]
+    temps-path: "/Users/reox/Documents/Git Repos/pcb2photon/.build/x86_64-apple-macosx10.10/debug/pcb2photon.build"
+    objects: ["/Users/reox/Documents/Git Repos/pcb2photon/.build/x86_64-apple-macosx10.10/debug/pcb2photon.build/ConsoleIO.swift.o","/Users/reox/Documents/Git Repos/pcb2photon/.build/x86_64-apple-macosx10.10/debug/pcb2photon.build/Converter.swift.o","/Users/reox/Documents/Git Repos/pcb2photon/.build/x86_64-apple-macosx10.10/debug/pcb2photon.build/ConverterUtil.swift.o","/Users/reox/Documents/Git Repos/pcb2photon/.build/x86_64-apple-macosx10.10/debug/pcb2photon.build/ImageFileDecoders.swift.o","/Users/reox/Documents/Git Repos/pcb2photon/.build/x86_64-apple-macosx10.10/debug/pcb2photon.build/main.swift.o"]
+    other-args: ["-swift-version","4","-target","x86_64-apple-macosx10.10","-sdk","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk","-F","/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/Library/Frameworks","-Onone","-g","-enable-testing","-j4","-DSWIFT_PACKAGE","-module-cache-path","/Users/reox/Documents/Git Repos/pcb2photon/.build/x86_64-apple-macosx10.10/debug/ModuleCache","-Xfrontend","-color-diagnostics"]
+    sources: ["/Users/reox/Documents/Git Repos/pcb2photon/Sources/pcb2photon/ConsoleIO.swift","/Users/reox/Documents/Git Repos/pcb2photon/Sources/pcb2photon/Converter.swift","/Users/reox/Documents/Git Repos/pcb2photon/Sources/pcb2photon/ConverterUtil.swift","/Users/reox/Documents/Git Repos/pcb2photon/Sources/pcb2photon/ImageFileDecoders.swift","/Users/reox/Documents/Git Repos/pcb2photon/Sources/pcb2photon/main.swift"]
+    is-library: false
+    enable-whole-module-optimization: false
+    num-threads: "4"
+
