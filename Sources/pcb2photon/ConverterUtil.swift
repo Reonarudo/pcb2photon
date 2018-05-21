@@ -17,6 +17,8 @@ enum OptionError: Error{
 enum ConvertError: Error{
     case fileNotFound(fileName:String)
     case fileTypeNotSupported(file:String)
+    case internalConverterError(error:String)
+    case unknownError
 }
 
 enum OptionType: String {
@@ -90,3 +92,5 @@ enum ImageScaling: String {
         }
     }
 }
+
+let templatePhotonFile1440x2560:Data = try! Data(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "template", ofType: "photon")!))

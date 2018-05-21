@@ -7,8 +7,9 @@
 //
 
 import Foundation
+import SGLImage
 
-struct FileOptions {
+struct ConversionOptions {
     //                              defaults:
     var threshold : Float           = 0.5
     var alignment : ImageAlignment  = .center
@@ -21,7 +22,7 @@ struct FileOptions {
 
 class Converter{
     let consoleIO : ConsoleIO           = ConsoleIO()
-    var conversionOptions : FileOptions = FileOptions()
+    var conversionOptions : ConversionOptions = ConversionOptions()
     var filesToConvert : [String]       = []
     
     func staticMode() {
@@ -58,17 +59,24 @@ class Converter{
         //Get file path
         let fileURL:URL = try getPath(to: fileName)
         //Fetch file data
-        let fileData = try Data(contentsOf: fileURL)
+        //let fileData = try Data(contentsOf: fileURL)
         
-        guard let fileDecoder = fileDecoderFactory(fileData) else{
-            throw ConvertError.fileTypeNotSupported(file: fileName)
+        
+        let fileData = try SGLImageConverter(fileURL, options: conversionOptions).convert()
+        
+        if let newFileName:String = newFile {
+            let pathURL = fileURL.deletingLastPathComponent()
+            try fileData.decodedData.write(to: pathURL.appendingPathComponent(newFileName))
+        }else{
+            let pathURL = fileURL.deletingPathExtension()
+            try fileData.decodedData.write(to:pathURL.appendingPathExtension("photon"))
         }
         
-        let _ = fileDecoder.decode(fileData)
+        
     }
     
     //
-    private func fileDecoderFactory(_ file:Data) -> ImageFileDecoder?{
+    private func fileDecoderFactory(_ file:Data) -> ImageFileConverter?{
         return nil
     }
     
@@ -76,10 +84,9 @@ class Converter{
     private func getPath(to file:String) throws ->URL{
         let fileManager = FileManager.default
         let fileURL = URL(fileURLWithPath: fileManager.currentDirectoryPath).appendingPathComponent(file)
-        if !fileManager.fileExists(atPath: fileURL.absoluteString){
+        if !fileManager.fileExists(atPath: fileURL.path){
             throw ConvertError.fileNotFound(fileName: file)
         }
-        
         return fileURL
     }
     
@@ -162,8 +169,8 @@ class Converter{
         return (OptionType(value: option), option)
     }
     
-    func readOptions(_ arguments:[String])->FileOptions{
-        return FileOptions()
+    func readOptions(_ arguments:[String])->ConversionOptions{
+        return ConversionOptions()
     }
     
     func isSupported(file type:String)->Bool{
