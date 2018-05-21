@@ -14,7 +14,7 @@
 typedef struct {
     float layerHeight <fgcolor=cBlack, bgcolor=cWhite>;
     float bottomExposureTime <fgcolor=cBlack, bgcolor=cWhite>;
-    int offTime <fgcolor=cBlack, bgcolor=cWhite>;
+    float offTime <fgcolor=cBlack, bgcolor=cWhite>;
 
 //-----Enough to fetch layer data non-sequentially
     int dataStartPos <fgcolor=cBlack, bgcolor=cWhite>;
