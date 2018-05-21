@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "SGLImage",
+        "repositoryURL": "https://github.com/SwiftGL/Image.git",
+        "state": {
+          "branch": null,
+          "revision": "7aa96e7548baa8d06619b97a1906012193f6eff8",
+          "version": "2.2.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
