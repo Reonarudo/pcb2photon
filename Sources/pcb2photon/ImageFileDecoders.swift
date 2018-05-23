@@ -91,7 +91,7 @@ class SGLImageConverter: ImageFileConverter {
             
         }
         let imageData:Data = Data(bytes: buckets.map{$0.byte})
-        var fileData:Data = templatePhotonFile1440x2560
+        var fileData:Data = PhotonFile().data()
         
         //Prepare and append imag array metadata
         var layerHeight = config.pcbThickness
@@ -106,7 +106,7 @@ class SGLImageConverter: ImageFileConverter {
         let offTimeData = Data(buffer: UnsafeBufferPointer(start: &offTime, count: 1))
         fileData.append(offTimeData)
         
-        var startPos = UInt32(18110)
+        var startPos = UInt32(fileData.count+24)
         let startPosData = Data(buffer: UnsafeBufferPointer(start: &startPos, count: 1))
         fileData.append(startPosData)
         
