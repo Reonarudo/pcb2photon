@@ -93,4 +93,4 @@ enum ImageScaling: String {
     }
 }
 
-let templatePhotonFile1440x2560:Data = try! Data(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "template", ofType: "photon")!))
+
