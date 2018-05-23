@@ -58,6 +58,9 @@
 		2272E11920B3295C003F6D41 /* test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test.png; sourceTree = "<group>"; };
 		2272E11B20B33E40003F6D41 /* test2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test2.png; sourceTree = "<group>"; };
 		2272E11D20B3411C003F6D41 /* PhotonFileHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotonFileHandler.swift; sourceTree = "<group>"; };
+		22C91E2C20B5804700F45D5A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		22C91E2D20B5804800F45D5A /* activityDiagram.pltuml */ = {isa = PBXFileReference; lastKnownFileType = text; path = activityDiagram.pltuml; sourceTree = "<group>"; };
+		22C91E2E20B580F900F45D5A /* result.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = result.png; sourceTree = "<group>"; };
 		OBJ_10 /* Converter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Converter.swift; sourceTree = "<group>"; };
 		OBJ_11 /* ConverterUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterUtil.swift; sourceTree = "<group>"; };
 		OBJ_12 /* ImageFileDecoders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFileDecoders.swift; sourceTree = "<group>"; };
@@ -105,6 +108,7 @@
 		OBJ_14 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				22C91E2E20B580F900F45D5A /* result.png */,
 				2272E11B20B33E40003F6D41 /* test2.png */,
 				2272E11920B3295C003F6D41 /* test.png */,
 				225A196C20B31AAD000B679B /* PhotonFileTemplate.bt */,
@@ -155,6 +159,8 @@
 		OBJ_5 = {
 			isa = PBXGroup;
 			children = (
+				22C91E2D20B5804800F45D5A /* activityDiagram.pltuml */,
+				22C91E2C20B5804700F45D5A /* README.md */,
 				OBJ_6 /* Package.swift */,
 				OBJ_7 /* Sources */,
 				OBJ_14 /* Tests */,
