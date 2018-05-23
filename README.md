@@ -39,8 +39,8 @@ Command parameters:
 * -o [output_filename [output_filename2 [...]] Specify output file names, if no name are provided the input file name will be used.
 * -h Displays this information
 
-![Activity Diagram](https://www.planttext.com/plantuml/img/TP8nJyCm48Lt_ugJkZGBAaWipK1HKGKI4qA8zOJFYYN7PzaN2l-Us24q9QcNEBfxxzdVUPS4etIjKwhibDg-46gmFdHoi8x0OqkfLjR0Elyde2-RvAu2QSZ3Mc97bO9-3K8EOjcZWu2nLmh5NfpBsU0HqrB3WjceU4DdzQHrkRF4FpFgMMfUv1B1sc3_-ITvRI8VWMBaM9zLad0uwRssHbrq6e8r6UoSp0umY6V2UNI97BgFJGPVQ9KvW2dWXI54_g2KWTbqnhwSuMze9-9F2L8N0aSXNMp0S6nHbZckZC7RpMPmctH3Wruxca1QxJStX-k7xNq8xljqQMWxmJpV2VxHTC_-awBaQro5XeLzVHdgA9fWWlSpebx_Ol8CBKSQ85MgS5IxlfvVzGy0"Current in development stage marked in red.")
+![Activity Diagram](https://www.planttext.com/plantuml/img/TP8nJyCm48Lt_ugJkZGBAaWipK1HKGKI4qA8zOJFYYN7PzaN2l-Us24q9QcNEBfxxzdVUPS4etIjKwhibDg-46gmFdHoi8x0OqkfLjR0Elyde2-RvAu2QSZ3Mc97bO9-3K8EOjcZWu2nLmh5NfpBsU0HqrB3WjceU4DdzQHrkRF4FpFgMMfUv1B1sc3_-ITvRI8VWMBaM9zLad0uwRssHbrq6e8r6UoSp0umY6V2UNI97BgFJGPVQ9KvW2dWXI54_g2KWTbqnhwSuMze9-9F2L8N0aSXNMp0S6nHbZckZC7RpMPmctH3Wruxca1QxJStX-k7xNq8xljqQMWxmJpV2VxHTC_-awBaQro5XeLzVHdgA9fWWlSpebx_Ol8CBKSQ85MgS5IxlfvVzGy0 "Current in development stage marked in red.")
 
 ## Result of one of the included test images
 
-![Screen shot](https://www.planttext.com/plantuml/img/TP8nJyCm48Lt_ugJkZGBAaWipK1HKGKI4qA8zOJFYYN7PzaN2l-Us24q9QcNEBfxxzdVUPS4etIjKwhibDg-46gmFdHoi8x0OqkfLjR0Elyde2-RvAu2QSZ3Mc97bO9-3K8EOjcZWu2nLmh5NfpBsU0HqrB3WjceU4DdzQHrkRF4FpFgMMfUv1B1sc3_-ITvRI8VWMBaM9zLad0uwRssHbrq6e8r6UoSp0umY6V2UNI97BgFJGPVQ9KvW2dWXI54_g2KWTbqnhwSuMze9-9F2L8N0aSXNMp0S6nHbZckZC7RpMPmctH3Wruxca1QxJStX-k7xNq8xljqQMWxmJpV2VxHTC_-awBaQro5XeLzVHdgA9fWWlSpebx_Ol8CBKSQ85MgS5IxlfvVzGy0"Result of test2.png conversion")
+![Screen shot](result.png "Result of test2.png conversion")
