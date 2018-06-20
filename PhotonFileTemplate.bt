@@ -12,8 +12,19 @@
 //------------------------------------------------
 
 typedef struct {
+    BitfieldDisablePadding();
+    uint blue : 5 <fgcolor=cBlue, bgcolor=cBlack>;
+    uint repeat : 1 <fgcolor=cWhite, bgcolor=cBlack>;
+    uint green : 5 <fgcolor=cGreen, bgcolor=cBlack>;
+    uint red : 5 <fgcolor=cRed, bgcolor=cBlack>;
+    if(repeat == 1){
+        ushort numberOfPixels <fgcolor=cWhite, bgcolor=cBlack>;
+    }
+} colorPixelFormat;
+
+typedef struct {
     float layerHeight <fgcolor=cBlack, bgcolor=cWhite>;
-    float bottomExposureTime <fgcolor=cBlack, bgcolor=cWhite>;
+    float exposureTime <fgcolor=cBlack, bgcolor=cWhite>;
     int offTime <fgcolor=cBlack, bgcolor=cWhite>;
 
 //-----Enough to fetch layer data non-sequentially
@@ -24,12 +35,24 @@ typedef struct {
 } layerDef;
 
 typedef struct(int size) {
-    BYTE layerDataBlock[size] <fgcolor=cBlack, bgcolor=0x00FF00>;
+    BYTE layerDataBlock[size/2] <fgcolor=cBlack, bgcolor=0x00FF00>;
 } layerRawData;
 
 typedef struct(int size) {
-    BYTE commandDataBlock[size] <fgcolor=cRed, bgcolor=cBlack>;
-} commandLikeData;
+    colorPixelFormat layerDataBlock[size];
+} rgbPreviewImage;
+
+typedef struct {
+    int width <fgcolor=cRed, bgcolor=cWhite>;
+    int height <fgcolor=cGreen, bgcolor=cWhite>;
+
+    int dataStartPos <fgcolor=cBlack, bgcolor=cWhite>;
+    int dataSize <fgcolor=cBlack, bgcolor=cWhite>;
+
+    int padding[4] <fgcolor=cBlack, bgcolor=cBlack>;
+    colorPixelFormat layerDataBlock[dataSize/4];
+    //rgbPreviewImage c(dataSize);
+} previewImage;
 
 struct FILE{
     struct HEADER{
@@ -46,32 +69,18 @@ struct FILE{
         int nBottomLayers <fgcolor=cYellow, bgcolor=cWhite>; //Haven't found where these layers show up
         int resolutionX <fgcolor=cBlack, bgcolor=cWhite>;
         int resolutionY <fgcolor=cBlack, bgcolor=cWhite>;
-        int fstUnknownArrayDefStart <fgcolor=cRed, bgcolor=cWhite>; //108
+        int preview1Offset <format=hex, fgcolor=cBlack, bgcolor=cWhite>;
         int layerDefsStart <fgcolor=cGreen, bgcolor=cWhite>;
         int nLayers <fgcolor=cBlack, bgcolor=cWhite>;
-        int secUnknownArrayDefStart <fgcolor=cRed, bgcolor=cWhite>; //33380
+        int preview2Offset <format=hex, fgcolor=cBlack, bgcolor=cWhite>;
         int unknown6 <fgcolor=cGreen, bgcolor=cWhite>; //padding???
         int unknown7 <fgcolor=cBlue, bgcolor=cWhite>; //padding???
         int padding1[6] <fgcolor=cBlack, bgcolor=cBlack>;//00s padding?
     } header;
 //---Always repeats 2 times?---Need to battle test it
-    int unknown8 <fgcolor=cRed, bgcolor=cWhite>;//343
-    int unknown9 <fgcolor=cGreen, bgcolor=cWhite>;//313
-
-    int dataStartPos0 <fgcolor=cBlack, bgcolor=cWhite>;
-    int dataSize0 <fgcolor=cBlack, bgcolor=cWhite>;
-
-    int padding0[4] <fgcolor=cBlack, bgcolor=cBlack>;
-    commandLikeData c0(dataSize0);
+    previewImage prev1;
 //---
-    int unknown14 <fgcolor=cRed, bgcolor=cWhite>;//199 (-57)
-    int unknown15 <fgcolor=cGreen, bgcolor=cWhite>;//180 (-76) 
-
-    int dataStartPos1 <fgcolor=cBlack, bgcolor=cWhite>;
-    int dataSize1 <fgcolor=cBlack, bgcolor=cWhite>;
-
-    int padding1[4] <fgcolor=cBlack, bgcolor=cBlack>;
-    commandLikeData c1(dataSize1);
+    previewImage prev2;
 //---
     layerDef lDefs[header.nLayers];
     local int i;
