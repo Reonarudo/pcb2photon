@@ -54,7 +54,7 @@
 
 /* Begin PBXFileReference section */
 		225A196920B2FAD7000B679B /* template.photon */ = {isa = PBXFileReference; lastKnownFileType = file; path = template.photon; sourceTree = "<group>"; };
-		225A196C20B31AAD000B679B /* PhotonFileTemplate.bt */ = {isa = PBXFileReference; lastKnownFileType = text; path = PhotonFileTemplate.bt; sourceTree = "<group>"; };
+		225A196C20B31AAD000B679B /* PhotonFileTemplate.bt */ = {isa = PBXFileReference; explicitFileType = sourcecode.c; path = PhotonFileTemplate.bt; sourceTree = "<group>"; };
 		2272E11920B3295C003F6D41 /* test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test.png; sourceTree = "<group>"; };
 		2272E11B20B33E40003F6D41 /* test2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test2.png; sourceTree = "<group>"; };
 		2272E11D20B3411C003F6D41 /* PhotonFileHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotonFileHandler.swift; sourceTree = "<group>"; };
