@@ -1,16 +1,18 @@
 matrix:
   include:
     - os: linux
-      dist: xenial
+      dist: trusty
       env:
+        - OS_VER=14.04
         - SWIFT_VER=4.03
       before_install:
         - sudo apt-get install clang libicu-dev git
         - chmod +x ./scripts/install-swift.sh
       install: ./scripts/install-swift.sh
     - os: linux
-      dist: xenial
+      dist: trusty
       env:
+        - OS_VER=14.04
         - SWIFT_VER=4.1
       before_install:
         - sudo apt-get install clang libicu-dev git
