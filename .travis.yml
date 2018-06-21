@@ -7,6 +7,7 @@ dist: trusty
 osx_image: xcode9.4
 
 install:
+  ls
   sudo ./scripts/install-swift.sh -qq
 script:
 - swift --version
