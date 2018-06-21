@@ -1,6 +1,7 @@
 #!/bin/bash
 set -e
-
+cat ~/.bashrc
+cat ~/.bash_profile
 if [[ $TRAVIS_OS_NAME == 'linux' ]]; then
     echo "Installing Swift for Linux"
     echo "...removing dependencie locks"
