@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e
+set -ve
 cat ~/.bashrc
 cat ~/.bash_profile
 if [[ $TRAVIS_OS_NAME == 'linux' ]]; then
