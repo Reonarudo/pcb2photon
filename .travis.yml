@@ -5,10 +5,8 @@ language: generic
 sudo: required
 dist: trusty
 osx_image: xcode9.4
-
-install:
-- ls
-- sudo ./scripts/install-swift.sh -qq
+before_install: chmod +x ./scripts/install-swift.sh
+install: ./scripts/install-swift.sh
 script:
 - swift --version
 #- . ~/.swiftenv/init
