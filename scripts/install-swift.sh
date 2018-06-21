@@ -2,7 +2,9 @@
 set -e
 swift_v='4.0.3'
 platform='unknown'
-echo "$unamestr"
+unamestr=`uname`
+echo "- $unamestr"
+echo "- $OSTYPE"
 if [[ "$unamestr" == 'Linux' ]]; then
     echo "Running Linux"
     platform='linux'
