@@ -6,8 +6,7 @@ if [[ $TRAVIS_OS_NAME == 'linux' ]]; then
     echo "Installing Swift"
     echo "-Installing dependencies..."
     sudo apt-get install git -qq
-    sudo apt-get update
-    sudo apt-get install clang libicu-dev libpython2.7
+    sudo apt-get install clang libicu-dev libpython2.7 -qq
     echo "-Fetching Packages dependencies..."
     wget -q -O - https://swift.org/keys/all-keys.asc | sudo gpg --import -
     wget https://swift.org/builds/swift-$swift_v-release/ubuntu1604/swift-$swift_v-RELEASE/swift-$swift_v-RELEASE-ubuntu16.04.tar.gz
