@@ -1,24 +1,25 @@
 #!/bin/bash
 set -e
-swift_v='4.0.3'
 
 if [[ $TRAVIS_OS_NAME == 'linux' ]]; then
-    echo "Installing Swift"
-    echo "-Installing dependencies..."
-    sudo apt-get install git -qq
-    sudo apt-get install clang libicu-dev libpython2.7 -qq
-    echo "-Fetching Packages dependencies..."
-    wget -q -O - https://swift.org/keys/all-keys.asc | sudo gpg --import -
-    wget https://swift.org/builds/swift-$swift_v-release/ubuntu1604/swift-$swift_v-RELEASE/swift-$swift_v-RELEASE-ubuntu16.04.tar.gz
-    wget https://swift.org/builds/swift-$swift_v-release/ubuntu1604/swift-$swift_v-RELEASE/swift-$swift_v-RELEASE-ubuntu16.04.tar.gz.sig
-    echo "-Verifying packages..."
-    chmod 0600 ~/.gnupg/gpg.conf
-    gpg --verify swift-$swift_v-RELEASE-ubuntu16.04.tar.gz.sig
-    echo "-Extracting packages"
-    tar xzf swift-$swift_v-RELEASE-ubuntu16.04.tar.gz
-    echo "-Configureing paths..."
-    mv swift-$swift_v-RELEASE-ubuntu16.04 /usr/share/swift
-    echo "export PATH=/usr/share/swift/usr/bin:$PATH" >> ~/.bashrc
-    source  ~/.bashrc
+    echo "Installing Swift for Linux"
+    sudo apt-get install clang libicu-dev git -qq
+    if [[ $OS_VER == '16.04' ]]; then
+        echo ">Ubuntu Xenial 16.04"
+    elif [[ $OS_VER == '14.04' ]]; then
+        echo ">Ubuntu Trusty 14.04"
+        echo "-Fetching & Installing Ubuntu Trusty 14.04 dependencies..."
+        sudo apt-get install clang-3.6 -qq
+        sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-3.6 100 -qq
+        sudo update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-3.6 100 -qq
+    fi
+    echo "-Installing Swift through #SwiftEnv#"
+    mkdir .swiftenv
+    git clone https://github.com/kylef/swiftenv ~/.swiftenv
+    echo 'export SWIFTENV_ROOT="$HOME/.swiftenv"' >> ~/.bashrc
+    echo 'export PATH="$SWIFTENV_ROOT/bin:$PATH"' >> ~/.bashrc
+    echo 'eval "$(swiftenv init -)"' >> ~/.bashrc
+    source ~/.bashrc
+    swiftenv install $SWIFT_VER
     echo "Finished installing Swift!"
 fi
