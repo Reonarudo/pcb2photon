@@ -22,13 +22,19 @@ if [[ $TRAVIS_OS_NAME == 'linux' ]]; then
     echo "-Installing Swift through #SwiftEnv#"
     mkdir .swiftenv
     git clone https://github.com/kylef/swiftenv ~/.swiftenv
+    echo 'export SWIFTENV_ROOT="$HOME/.swiftenv"' >> ~/.bash_profile
+    echo 'export PATH="$SWIFTENV_ROOT/bin:$PATH"' >> ~/.bash_profile
+    echo 'eval "$(swiftenv init -)"' >> ~/.bash_profile
+    echo 'export SWIFTENV_ROOT="$HOME/.swiftenv"' >> ~/.bashrc
+    echo 'export PATH="$SWIFTENV_ROOT/bin:$PATH"' >> ~/.bashrc
     echo 'eval "$(swiftenv init -)"' >> ~/.bashrc
-    echo $(swiftenv init -)
-    sudo swiftenv install $SWIFT_VER
-    swiftenv version
-    swiftenv global $SWIFT_VER
-    swiftenv version
-    swiftenv which swift
     source ~/.bashrc
+    source ~/.bash_profile
+    swiftenv install $SWIFT_VER
+    swiftenv which swift
+    cat ~/.bashrc
+    cat ~/.bash_profile
+    source ~/.bashrc
+    source ~/.bash_profile
     echo "Finished installing Swift!"
 fi
