@@ -4,18 +4,24 @@ matrix:
       dist: xenial
       env:
         - SWIFT_VER=4.03
+      before_install:
+        - sudo apt-get install clang libicu-dev git
+        - chmod +x ./scripts/install-swift.sh
+      install: ./scripts/install-swift.sh
     - os: linux
       dist: xenial
       env:
         - SWIFT_VER=4.1
+      before_install:
+        - sudo apt-get install clang libicu-dev git
+        - chmod +x ./scripts/install-swift.sh
+      install: ./scripts/install-swift.sh
     - os: osx
       osx_image: xcode9.4
       language: generic
 sudo: required
 language: generic
-before_install:
-  - chmod +x ./scripts/install-swift.sh
-install: ./scripts/install-swift.sh
+
 script:
   - swift --version
 #- . ~/.swiftenv/init
