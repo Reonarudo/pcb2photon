@@ -1,18 +1,14 @@
 matrix:
   include:
-    #- os: linux
-    #  dist: trusty
-    #  sudo: required
-    #  language: generic
     - os: linux
       dist: xenial
-      sudo: required
-      language: generic
     - os: osx
       osx_image: xcode9.4
       language: generic
     - env: SWIFT_VER=4.03
     - env: SWIFT_VER=4.1
+sudo: required
+language: generic
 before_install:
   - chmod +x ./scripts/install-swift.sh
 install: ./scripts/install-swift.sh
