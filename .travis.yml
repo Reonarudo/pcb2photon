@@ -3,7 +3,7 @@ os:
 - osx
 language: generic
 sudo: required
-dist: trusty
+dist: xenial
 osx_image: xcode9.4
 before_install: chmod +x ./scripts/install-swift.sh
 install: ./scripts/install-swift.sh
