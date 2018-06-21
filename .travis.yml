@@ -4,14 +4,14 @@ matrix:
       dist: xenial
       env:
         - SWIFT_VER=4.03
-        - SWIFTENV_ROOT="$HOME/.swiftenv"
-        - PATH="$SWIFTENV_ROOT/bin:$PATH"
+        - SWIFTENV_ROOT=$HOME/.swiftenv
+        - PATH=$SWIFTENV_ROOT/bin:$PATH
     - os: linux
       dist: xenial
       env:
         - SWIFT_VER=4.1
-        - SWIFTENV_ROOT="$HOME/.swiftenv"
-        - PATH="$SWIFTENV_ROOT/bin:$PATH"
+        - SWIFTENV_ROOT=$HOME/.swiftenv
+        - PATH=$SWIFTENV_ROOT/bin:$PATH
     - os: osx
       osx_image: xcode9.4
       language: generic
