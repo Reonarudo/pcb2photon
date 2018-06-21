@@ -3,7 +3,7 @@ set -e
 
 if [[ $TRAVIS_OS_NAME == 'linux' ]]; then
     echo "Installing Swift for Linux"
-    sudo rm /var/lib/apt/lists/lock -qq
+    sudo rm /var/lib/apt/lists/lock
     sudo apt-get install clang libicu-dev git -qq
     if [[ $OS_VER == '14.04' ]]; then
         echo ">Ubuntu Trusty 14.04"
