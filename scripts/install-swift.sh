@@ -24,7 +24,11 @@ if [[ $TRAVIS_OS_NAME == 'linux' ]]; then
     echo 'export SWIFTENV_ROOT="$HOME/.swiftenv"' >> ~/.bashrc
     echo 'export PATH="$SWIFTENV_ROOT/bin:$PATH"' >> ~/.bashrc
     echo 'eval "$(swiftenv init -)"' >> ~/.bashrc
-    source ~/.bashrc
     $HOME/.swiftenv/bin/swiftenv install $SWIFT_VER
+    $HOME/.swiftenv/bin/swiftenv version
+    $HOME/.swiftenv/bin/swiftenv global $SWIFT_VER
+    $HOME/.swiftenv/bin/swiftenv version
+    $HOME/.swiftenv/bin/swiftenv which swift
+    source ~/.bashrc
     echo "Finished installing Swift!"
 fi
