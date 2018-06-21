@@ -6,7 +6,6 @@ sudo: required
 dist: xenial
 osx_image: xcode9.4
 before_install:
-- chmod 0600 ~/.gnupg/gpg.conf
 - chmod +x ./scripts/install-swift.sh
 install: ./scripts/install-swift.sh
 script:

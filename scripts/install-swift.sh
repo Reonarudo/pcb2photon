@@ -13,6 +13,7 @@ if [[ $TRAVIS_OS_NAME == 'linux' ]]; then
     wget https://swift.org/builds/swift-$swift_v-release/ubuntu1604/swift-$swift_v-RELEASE/swift-$swift_v-RELEASE-ubuntu16.04.tar.gz
     wget https://swift.org/builds/swift-$swift_v-release/ubuntu1604/swift-$swift_v-RELEASE/swift-$swift_v-RELEASE-ubuntu16.04.tar.gz.sig
     echo "-Verifying packages..."
+    chmod 0600 ~/.gnupg/gpg.conf
     gpg --verify swift-$swift_v-RELEASE-ubuntu16.04.tar.gz.sig
     echo "-Extracting packages"
     tar xzf swift-$swift_v-RELEASE-ubuntu16.04.tar.gz
