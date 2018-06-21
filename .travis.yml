@@ -1,7 +1,7 @@
 os:
 - linux
 - osx
-language: generic
+language: swift
 sudo: required
 dist: xenial
 osx_image: xcode9.4
