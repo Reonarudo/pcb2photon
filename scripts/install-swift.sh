@@ -18,11 +18,12 @@ if [[ $TRAVIS_OS_NAME == 'linux' ]]; then
     else
         echo ">Ubuntu Xenial 16.04"
     fi
+    source ~/.bashrc
     echo "-Installing Swift through #SwiftEnv#"
     mkdir .swiftenv
     git clone https://github.com/kylef/swiftenv ~/.swiftenv
     echo 'eval "$(swiftenv init -)"' >> ~/.bashrc
-    echo '>>>>"$(swiftenv init -)"'
+    echo $(swiftenv init -)
     sudo swiftenv install $SWIFT_VER
     swiftenv version
     swiftenv global $SWIFT_VER
