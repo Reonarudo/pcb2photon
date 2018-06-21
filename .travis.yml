@@ -11,9 +11,8 @@ matrix:
     - os: osx
       osx_image: xcode9.4
       language: generic
-    - env:
-        - SWIFT_VER=4.03
-        - SWIFT_VER=4.1
+    - env: SWIFT_VER=4.03
+    - env: SWIFT_VER=4.1
 before_install:
   - chmod +x ./scripts/install-swift.sh
 install: ./scripts/install-swift.sh
