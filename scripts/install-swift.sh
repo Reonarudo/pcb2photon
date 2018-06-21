@@ -2,6 +2,7 @@
 set -e
 swift_v='4.0.3'
 platform='unknown'
+echo "$unamestr"
 if [[ "$unamestr" == 'Linux' ]]; then
     echo "Running Linux"
     platform='linux'
