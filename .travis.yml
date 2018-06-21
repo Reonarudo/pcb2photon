@@ -1,0 +1,9 @@
+os: osx
+
+before_install:
+- brew install git-lfs
+
+deploy:
+  skip_cleanup: true
+
+script: swift build

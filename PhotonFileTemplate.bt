@@ -78,9 +78,9 @@ struct FILE{
         int padding1[6] <fgcolor=cBlack, bgcolor=cBlack>;//00s padding?
     } header;
 //---Always repeats 2 times?---Need to battle test it
-    previewImage prev1;
+    previewImage previewImage;
 //---
-    previewImage prev2;
+    previewImage thumbnailImage;
 //---
     layerDef lDefs[header.nLayers];
     local int i;
