@@ -30,6 +30,8 @@ class Converter{
             try readParameters()
             
             let files = Array(zip(filesToConvert, conversionOptions.output))
+            var allFiles = filesToConvert.map{return ($0, $0)}
+            allFiles.replaceSubrange(0..<files.count, with: files)
             try files.forEach{try convert($0,into: $1)}
             
         } catch OptionError.invalidValue(let option) {
