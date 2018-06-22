@@ -1,26 +1,14 @@
-matrix:
-  include:
-    - os: linux
-      dist: trusty
-      env:
-        - SWIFT_VER=4.0
-      before_install:
-        - chmod +x ./scripts/install-swift.sh
-      install: ./scripts/install-swift.sh
-    - os: linux
-      dist: trusty
-      env:
-        - SWIFT_VER=4.1.2
-      before_install:
-        - chmod +x ./scripts/install-swift.sh
-      install: ./scripts/install-swift.sh
-    - os: osx
-      osx_image: xcode9.4
-      language: generic
-sudo: required
+os:
+  - linux
+  - osx
 language: generic
-
+sudo: required
+dist: trusty
+osx_image: xcode9.4
+install:
+  - eval "$(curl -sL https://swiftenv.fuller.li/install.sh)"
 script:
-  - swift --version
-#- . ~/.swiftenv/init
-#- swift build
+  - swift build
+env:
+  - SWIFT_VERSION=4.0
+  - SWIFT_VERSION=4.1.2
