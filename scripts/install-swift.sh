@@ -1,7 +1,7 @@
 #!/bin/bash
 set -ve
-cat ~/.bashrc
-cat ~/.bash_profile
+#cat ~/.bashrc
+#cat ~/.bash_profile
 if [[ $TRAVIS_OS_NAME == 'linux' ]]; then
     echo "Installing Swift for Linux"
     if [[ $OS_VER == '14.04' ]]; then
@@ -25,6 +25,7 @@ if [[ $TRAVIS_OS_NAME == 'linux' ]]; then
     echo 'eval "$(swiftenv init -)"' >> ~/.bashrc
     source ~/.bashrc
     source ~/.bash_profile
+    swiftenv versions
     swiftenv install $SWIFT_VER
     swiftenv which swift
     cat ~/.bashrc
