@@ -23,11 +23,8 @@ class ConsoleIO{
             fputs("Error: \(message)\n", stderr)
         }
     }
-    
     func printUsage() {
-        
-        let executableName = (CommandLine.arguments[0] as NSString).lastPathComponent
-        
+        let executableName = NSString(string: CommandLine.arguments[0]).lastPathComponent
         writeMessage("usage:")
         writeMessage("\(executableName) [-h] [-t threshold-value] [-a alignment-options] [-s image-scaling] [-pcb thickness] [-e exposure-time] filename [filename2 [...]] [output_filename] [-o output_filename2 [...]]")
         writeMessage("\(executableName) filename will automatically convert the image")
