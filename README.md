@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/Reonarudo/pcb2photon.svg?branch=master)](https://travis-ci.org/Reonarudo/pcb2photon)
 #  PCB to Photon
 
 ## Overview
