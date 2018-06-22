@@ -3,19 +3,15 @@ matrix:
     - os: linux
       dist: trusty
       env:
-        - OS_VER=14.04
-        - SWIFT_VER=4.03
+        - SWIFT_VER=4.0
       before_install:
-        - sudo apt-get install clang libicu-dev git
         - chmod +x ./scripts/install-swift.sh
       install: ./scripts/install-swift.sh
     - os: linux
       dist: trusty
       env:
-        - OS_VER=14.04
-        - SWIFT_VER=4.1
+        - SWIFT_VER=4.1.2
       before_install:
-        - sudo apt-get install clang libicu-dev git
         - chmod +x ./scripts/install-swift.sh
       install: ./scripts/install-swift.sh
     - os: osx
