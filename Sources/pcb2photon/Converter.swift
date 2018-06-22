@@ -29,8 +29,7 @@ class Converter{
         do {
             try readParameters()
             
-            let files = zip(filesToConvert, conversionOptions.output) + filesToConvert.map{return ($0,nil)}
-            
+            let files = Array(zip(filesToConvert, conversionOptions.output))
             try files.forEach{try convert($0,into: $1)}
             
         } catch OptionError.invalidValue(let option) {
