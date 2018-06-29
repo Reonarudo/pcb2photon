@@ -8,8 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		225A196B20B3015A000B679B /* template.photon in CopyFiles */ = {isa = PBXBuildFile; fileRef = 225A196920B2FAD7000B679B /* template.photon */; };
-		2272E11A20B32A06003F6D41 /* test.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2272E11920B3295C003F6D41 /* test.png */; };
-		2272E11C20B33E46003F6D41 /* test2.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 2272E11B20B33E40003F6D41 /* test2.png */; };
+		229896FB20E62A22005245C3 /* test.bmp in CopyFiles */ = {isa = PBXBuildFile; fileRef = 229896FA20E629A3005245C3 /* test.bmp */; };
+		229896FC20E62A22005245C3 /* test2.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 229896F920E627B1005245C3 /* test2.png */; };
+		229896FD20E62A22005245C3 /* test.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = 229896F820E6279C005245C3 /* test.png */; };
 		22C91E2B20B4550400F45D5A /* PhotonFileHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2272E11D20B3411C003F6D41 /* PhotonFileHandler.swift */; };
 		OBJ_33 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_18 /* Image.swift */; };
 		OBJ_34 /* ImageBMP.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_19 /* ImageBMP.swift */; };
@@ -44,8 +45,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
-				2272E11C20B33E46003F6D41 /* test2.png in CopyFiles */,
-				2272E11A20B32A06003F6D41 /* test.png in CopyFiles */,
+				229896FB20E62A22005245C3 /* test.bmp in CopyFiles */,
+				229896FC20E62A22005245C3 /* test2.png in CopyFiles */,
+				229896FD20E62A22005245C3 /* test.png in CopyFiles */,
 				225A196B20B3015A000B679B /* template.photon in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -55,9 +57,10 @@
 /* Begin PBXFileReference section */
 		225A196920B2FAD7000B679B /* template.photon */ = {isa = PBXFileReference; lastKnownFileType = file; path = template.photon; sourceTree = "<group>"; };
 		225A196C20B31AAD000B679B /* PhotonFileTemplate.bt */ = {isa = PBXFileReference; explicitFileType = sourcecode.c; path = PhotonFileTemplate.bt; sourceTree = "<group>"; };
-		2272E11920B3295C003F6D41 /* test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test.png; sourceTree = "<group>"; };
-		2272E11B20B33E40003F6D41 /* test2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test2.png; sourceTree = "<group>"; };
 		2272E11D20B3411C003F6D41 /* PhotonFileHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotonFileHandler.swift; sourceTree = "<group>"; };
+		229896F820E6279C005245C3 /* test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = test.png; path = Tests/test.png; sourceTree = "<group>"; };
+		229896F920E627B1005245C3 /* test2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = test2.png; path = Tests/test2.png; sourceTree = "<group>"; };
+		229896FA20E629A3005245C3 /* test.bmp */ = {isa = PBXFileReference; lastKnownFileType = image.bmp; name = test.bmp; path = ".build/x86_64-apple-macosx10.10/debug/test.bmp"; sourceTree = "<group>"; };
 		22C91E2C20B5804700F45D5A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		22C91E2D20B5804800F45D5A /* activityDiagram.pltuml */ = {isa = PBXFileReference; lastKnownFileType = text; path = activityDiagram.pltuml; sourceTree = "<group>"; };
 		22C91E2E20B580F900F45D5A /* result.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = result.png; sourceTree = "<group>"; };
@@ -108,9 +111,10 @@
 		OBJ_14 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				229896FA20E629A3005245C3 /* test.bmp */,
+				229896F920E627B1005245C3 /* test2.png */,
+				229896F820E6279C005245C3 /* test.png */,
 				22C91E2E20B580F900F45D5A /* result.png */,
-				2272E11B20B33E40003F6D41 /* test2.png */,
-				2272E11920B3295C003F6D41 /* test.png */,
 				225A196C20B31AAD000B679B /* PhotonFileTemplate.bt */,
 			);
 			name = Tests;
