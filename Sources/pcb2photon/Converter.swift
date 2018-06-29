@@ -32,7 +32,7 @@ class Converter{
             let files = Array(zip(filesToConvert, conversionOptions.output))
             var allFiles = filesToConvert.map{return ($0, $0)}
             allFiles.replaceSubrange(0..<files.count, with: files)
-            try files.forEach{try convert($0,into: $1)}
+            try allFiles.forEach{try convert($0,into: $1)}
             
         } catch OptionError.invalidValue(let option) {
             consoleIO.writeMessage("01 Invalid value for \(option).", to: .error)
@@ -66,11 +66,23 @@ class Converter{
         let fileData = try SGLImageConverter(fileURL, options: conversionOptions).convert()
         
         if let newFileName:String = newFile {
-            let pathURL = fileURL.deletingLastPathComponent()
-            try fileData.decodedData.write(to: pathURL.appendingPathComponent(newFileName))
+            var outPathURL : URL
+            outPathURL = fileURL.absoluteURL
+            outPathURL.deleteLastPathComponent()
+            outPathURL.appendPathComponent(newFileName)
+            if(outPathURL.pathExtension != "photon"){
+                outPathURL.appendPathExtension("photon")
+            }
+            try fileData.decodedData.write(to: outPathURL)
+            consoleIO.writeMessage("Created file: \(outPathURL)", to: .standard)
         }else{
-            let pathURL = fileURL.deletingPathExtension()
-            try fileData.decodedData.write(to:pathURL.appendingPathExtension("photon"))
+            var outPathURL : URL
+            outPathURL = fileURL.absoluteURL
+            if(outPathURL.pathExtension != "photon"){
+                outPathURL.appendPathExtension("photon")
+            }
+            try fileData.decodedData.write(to:outPathURL)
+            consoleIO.writeMessage("Created file: \(outPathURL)", to: .standard)
         }
         
         
@@ -144,12 +156,10 @@ class Converter{
                     guard filesToConvert.count>0 else{
                         throw OptionError.noInputFiles
                     }
-                    var newFileNames : [String] = []
                     i+=1
-                    while i < min(filesToConvert.count, Int(argCount)){
-                        newFileNames.append(CommandLine.arguments[i])
-                        i+=1
-                    }
+                    let newFileNames : [String] = CommandLine.arguments[i..<(i+min(filesToConvert.count, Int(argCount)-i))].map{($0 as String)}
+                    i+=min(filesToConvert.count, Int(argCount))
+                    conversionOptions.output = newFileNames
                 case .exposure:
                     guard i+1 < argCount, let arg :Float = Float(CommandLine.arguments[i+1]), arg > 0 else{
                         throw OptionError.invalidValue(option: option.rawValue)
