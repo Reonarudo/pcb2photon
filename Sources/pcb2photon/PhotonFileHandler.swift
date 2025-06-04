@@ -9,10 +9,9 @@ import Foundation
 
 extension Float{
     var asData:Data{
-        get{
+        get {
             var value = self
-            let data = Data(buffer: UnsafeBufferPointer(start: &value, count: 1))
-            return data
+            return withUnsafeBytes(of: &value) { Data($0) }
         }
     }
     func asByteArray() -> [UInt8] {
@@ -22,10 +21,9 @@ extension Float{
 
 extension UInt16{
     var asData:Data{
-        get{
+        get {
             var value = self
-            let data = Data(buffer: UnsafeBufferPointer(start: &value, count: 1))
-            return data
+            return withUnsafeBytes(of: &value) { Data($0) }
         }
     }
     func asByteArray() -> [UInt8] {
@@ -35,10 +33,9 @@ extension UInt16{
 
 extension UInt32{
     var asData:Data{
-        get{
+        get {
             var value = self
-            let data = Data(buffer: UnsafeBufferPointer(start: &value, count: 1))
-            return data
+            return withUnsafeBytes(of: &value) { Data($0) }
         }
     }
     func asByteArray() -> [UInt8] {
@@ -110,7 +107,7 @@ class PhotonFile {
             sig.append(contentsOf: PhotonConstants.padding8) // padding
             sig.append(contentsOf: PhotonConstants.padding8) // padding
             
-            return Data(bytes: sig)
+            return Data(sig)
         }
     }
     
