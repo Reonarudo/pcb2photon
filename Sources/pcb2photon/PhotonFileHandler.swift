@@ -47,8 +47,12 @@ extension UInt32{
 }
 
 class PhotonFile {
-    private var templatePhotonFile1440x2560:Data {
-        return try! Data(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "template", ofType: "photon") ?? ""))
+    private var templatePhotonFile1440x2560: Data {
+        guard let path = Bundle.main.path(forResource: "template", ofType: "photon"),
+              let data = try? Data(contentsOf: URL(fileURLWithPath: path)) else {
+            return Data()
+        }
+        return data
     }
     private var header:Data{
         get{

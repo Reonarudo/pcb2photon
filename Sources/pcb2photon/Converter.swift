@@ -98,7 +98,10 @@ class Converter{
         while i < argCount {
             let argument = CommandLine.arguments[i]
             if argument.first == "-"{
-                let (option, value) = getOption(String(argument.dropFirst().first!))
+                guard let optionChar = argument.dropFirst().first else {
+                    throw OptionError.invalidOption(option: argument)
+                }
+                let (option, value) = getOption(String(optionChar))
                 switch option {
                 case .threshold:
                     guard i+1 < argCount, let arg :Float = Float(CommandLine.arguments[i+1]), arg > 0, arg < 1 else{
