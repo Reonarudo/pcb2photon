@@ -24,8 +24,10 @@ protocol ImageFileConverter {
 
 class SGLImageConverter: ImageFileConverter {
     let config : ConversionOptions
-    let outImageWidth = 1440
-    let outImageHeight = 2560
+    /// Width of the generated photon image in pixels.
+    let outImageWidth = Int(PhotonConstants.imageWidth)
+    /// Height of the generated photon image in pixels.
+    let outImageHeight = Int(PhotonConstants.imageHeight)
     
     var loader:SGLImageLoader
     
