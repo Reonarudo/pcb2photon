@@ -85,7 +85,7 @@ class Converter{
     private func getPath(to file:String) throws ->URL{
         let fileManager = FileManager.default
         let fileURL = URL(fileURLWithPath: fileManager.currentDirectoryPath).appendingPathComponent(file)
-        if !fileManager.fileExists(atPath: fileURL.path){
+        guard fileManager.fileExists(atPath: fileURL.path) else {
             throw ConvertError.fileNotFound(fileName: file)
         }
         return fileURL
@@ -97,12 +97,15 @@ class Converter{
         var i = 1
         while i < argCount {
             let argument = CommandLine.arguments[i]
-            if argument.first == "-"{
-                guard let optionChar = argument.dropFirst().first else {
-                    throw OptionError.invalidOption(option: argument)
-                }
-                let (option, value) = getOption(String(optionChar))
-                switch option {
+
+            guard argument.first == "-" else {
+                filesToConvert.append(argument)
+                i += 1
+                continue
+            }
+          
+            let (option, value) = getOption(String(argument.dropFirst().first!))
+            switch option {
                 case .threshold:
                     guard i+1 < argCount, let arg :Float = Float(CommandLine.arguments[i+1]), arg > 0, arg < 1 else{
                         throw OptionError.invalidValue(option: value)
@@ -162,9 +165,7 @@ class Converter{
                 case .unknown:
                     throw OptionError.invalidOption(option: value)
                 }
-            }else{
-                filesToConvert.append(argument)
-            }
+            
             i+=1
         }
     }
