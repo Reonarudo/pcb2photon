@@ -33,7 +33,7 @@ class SGLImageConverter: ImageFileConverter {
         self.loader = SGLImageLoader(fromFile: fileURL.path)
         config = opt
         guard loader.error == nil else {
-            throw ConvertError.internalConverterError(error : loader.error!)
+            throw ConvertError.internalConverterError(error: loader.error ?? "Unknown error")
         }
     }
     

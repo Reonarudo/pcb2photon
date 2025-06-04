@@ -97,12 +97,13 @@ class Converter{
         var i = 1
         while i < argCount {
             let argument = CommandLine.arguments[i]
+
             guard argument.first == "-" else {
                 filesToConvert.append(argument)
                 i += 1
                 continue
             }
-
+          
             let (option, value) = getOption(String(argument.dropFirst().first!))
             switch option {
                 case .threshold:
