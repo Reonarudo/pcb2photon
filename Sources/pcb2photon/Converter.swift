@@ -32,7 +32,7 @@ class Converter{
             let files = Array(zip(filesToConvert, conversionOptions.output))
             var allFiles = filesToConvert.map{return ($0, $0)}
             allFiles.replaceSubrange(0..<files.count, with: files)
-            try files.forEach{try convert($0,into: $1)}
+            try allFiles.forEach{try convert($0,into: $1)}
             
         } catch OptionError.invalidValue(let option) {
             consoleIO.writeMessage("01 Invalid value for \(option).", to: .error)
@@ -123,21 +123,25 @@ class Converter{
                     self.conversionOptions.alignment = arg
                     i+=1
                 case .scaling:
-                    guard i+1 < argCount else{
+                    guard i+1 < argCount else {
                         throw OptionError.invalidValue(option: value)
                     }
-                    let arg :ImageScaling = ImageScaling(value: CommandLine.arguments[i+1])
-                    guard arg != .unknown else{
+                    let optionValue = CommandLine.arguments[i+1]
+                    let arg :ImageScaling = ImageScaling(value: optionValue)
+                    guard arg != .unknown else {
                         throw OptionError.invalidValue(option: value)
                     }
-                    
+
                     if arg != .scaleBy {
                         self.conversionOptions.scaling = arg
-                        i+=1
-                    }else{
-                        guard i+1 < argCount, let arg :Float = Float(CommandLine.arguments[i+1]), arg > 0, arg < 1 else{
+                        i += 1
+                    } else {
+                        guard i+2 < argCount, let scaleValue : Float = Float(CommandLine.arguments[i+2]), scaleValue > 0, scaleValue < 1 else {
                             throw OptionError.invalidValue(option: value)
                         }
+                        self.conversionOptions.scaling = arg
+                        self.conversionOptions.scale = scaleValue
+                        i += 2
                     }
                     
                 case .pcbThickness:
@@ -151,11 +155,14 @@ class Converter{
                         throw OptionError.noInputFiles
                     }
                     var newFileNames : [String] = []
-                    i+=1
-                    while i < min(filesToConvert.count, Int(argCount)){
-                        newFileNames.append(CommandLine.arguments[i])
-                        i+=1
+                    i += 1
+                    while i < Int(argCount) && newFileNames.count < filesToConvert.count {
+                        let nextArg = CommandLine.arguments[i]
+                        if nextArg.first == "-" { break }
+                        newFileNames.append(nextArg)
+                        i += 1
                     }
+                    self.conversionOptions.output = newFileNames
                 case .exposure:
                     guard i+1 < argCount, let arg :Float = Float(CommandLine.arguments[i+1]), arg > 0 else{
                         throw OptionError.invalidValue(option: option.rawValue)
