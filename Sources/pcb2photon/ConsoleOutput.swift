@@ -1,5 +1,5 @@
 //
-//  ConsoleIO.swift
+//  ConsoleOutput.swift
 //  pcb2photon
 //
 //  Created by Leonardo Marques on 17.05.18.
@@ -14,7 +14,12 @@ enum OutputType {
     case standard
 }
 
-class ConsoleIO{
+/// Provides simple utilities for printing information to the console.
+class ConsoleOutput{
+    /// Writes a message to standard output or standard error.
+    /// - Parameters:
+    ///   - message: The text to display.
+    ///   - to:     Destination stream for the message.
     func writeMessage(_ message: String, to: OutputType = .standard) {
         switch to {
         case .standard:
@@ -23,6 +28,7 @@ class ConsoleIO{
             fputs("Error: \(message)\n", stderr)
         }
     }
+    /// Prints a short usage description for the tool.
     func printUsage() {
         let executableName = NSString(string: CommandLine.arguments[0]).lastPathComponent
         writeMessage("usage:")

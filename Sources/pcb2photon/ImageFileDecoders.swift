@@ -13,23 +13,31 @@ enum ImageDecoderType{
     case png
 }
 
-struct PCBImage {
-    var decodedData:Data
+/// Result of an image conversion containing the raw Photon file bytes.
+struct PhotonEncodedData {
+    /// Encoded binary data for the Photon file.
+    var decodedData: Data
 }
 
-protocol ImageFileConverter {
-    func convert() -> PCBImage;
+/// Defines an interface for converting image files into Photon data.
+protocol PhotonImageConverter {
+    func convert() -> PhotonEncodedData
 }
 
 
-class SGLImageConverter: ImageFileConverter {
+/// Image converter using the SwiftGL library for decoding image data.
+class SwiftGLPhotonConverter: PhotonImageConverter {
     let config : ConversionOptions
     let outImageWidth = 1440
     let outImageHeight = 2560
     
     var loader:SGLImageLoader
     
-    init(_ fileURL : URL, options opt: ConversionOptions) throws {
+    /// Creates a new converter for the image at `fileURL`.
+    /// - Parameters:
+    ///   - fileURL: Location of the source image file.
+    ///   - opt: Conversion configuration options.
+    init(_ fileURL: URL, options opt: ConversionOptions) throws {
         self.loader = SGLImageLoader(fromFile: fileURL.path)
         config = opt
         guard loader.error == nil else {
@@ -37,20 +45,26 @@ class SGLImageConverter: ImageFileConverter {
         }
     }
     
-    class Bucket{
-        var byte:UInt8 = 0
-        var color:Int{
-            get{
-                return Int((byte&0x80)>>7)
-            }}
-        init(color:Int) {
-            if(color == 1){
-                byte=0x81
-            }else{
-                byte=0x01
+    /// Helper used for run-length encoding of monochrome image data.
+    class RunLengthBucket {
+        /// Encoded byte storing the run length and pixel color.
+        var byte: UInt8 = 0
+
+        /// Current pixel color represented by the bucket (0 or 1).
+        var color: Int {
+            return Int((byte & 0x80) >> 7)
+        }
+
+        init(color: Int) {
+            if color == 1 {
+                byte = 0x81
+            } else {
+                byte = 0x01
             }
         }
 
+        /// Increments the run length counter.
+        /// - Returns: `true` when the bucket can still be increased, `false` when full.
         func add() -> Bool {
             let head = byte&0x80
             let body = byte&0x7F
@@ -63,10 +77,11 @@ class SGLImageConverter: ImageFileConverter {
         }
     }
     
-    func convert() -> PCBImage {
+    /// Converts the loaded image into Photon-encoded data.
+    func convert() -> PhotonEncodedData {
         let img = SGLImageGreyscale<UInt8>(loader)
         let totalPixels = img.width * img.height
-        var buckets:[Bucket] = []
+        var buckets:[RunLengthBucket] = []
         img.withUnsafeMutableBufferPointer { (bufferPt) in
             let tresholdValue = UInt8(255*config.threshold)
             var processedPixels = 0
@@ -77,13 +92,13 @@ class SGLImageConverter: ImageFileConverter {
                     if let lastBucket = buckets.last{
                         if lastBucket.color == currTreshColor{
                             if !lastBucket.add(){
-                                buckets.append(Bucket(color: currTreshColor))
+                                buckets.append(RunLengthBucket(color: currTreshColor))
                             }
                         }else{
-                            buckets.append(Bucket(color: currTreshColor))
+                            buckets.append(RunLengthBucket(color: currTreshColor))
                         }
                     }else{
-                        buckets.append(Bucket(color: currTreshColor))
+                        buckets.append(RunLengthBucket(color: currTreshColor))
                     }
                     processedPixels+=1
                 })
@@ -91,9 +106,9 @@ class SGLImageConverter: ImageFileConverter {
             
         }
         let imageData:Data = Data(bytes: buckets.map{$0.byte})
-        var fileData:Data = PhotonFile().data()
+        var fileData: Data = PhotonFile().fileContent()
         
-        //Prepare and append imag array metadata
+        // Prepare and append image array metadata
         var layerHeight = config.pcbThickness
         let layerHeightData = Data(buffer: UnsafeBufferPointer(start: &layerHeight, count: 1))
         fileData.append(layerHeightData)
@@ -122,7 +137,7 @@ class SGLImageConverter: ImageFileConverter {
         }
         //Append image data
         fileData.append(imageData)
-        return PCBImage(decodedData: fileData)
+        return PhotonEncodedData(decodedData: fileData)
     }
     
     

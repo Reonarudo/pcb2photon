@@ -9,12 +9,12 @@
 
 import Foundation
 
-let converter = Converter()
+let converter = PhotonFileConverter()
 
 if CommandLine.argc < 2 {
     //TODO: Handle interactive mode
 } else {
-    converter.staticMode()
+    converter.run()
 }
 
 

@@ -1,5 +1,5 @@
 //
-//  Converter.swift
+//  PhotonFileConverter.swift
 //  pcb2photon
 //
 //  Created by Leonardo Marques on 17.05.18.
@@ -9,6 +9,7 @@
 import Foundation
 import SGLImage
 
+/// Configuration options for the conversion process.
 struct ConversionOptions {
     //                              defaults:
     var threshold : Float           = 0.5
@@ -20,19 +21,27 @@ struct ConversionOptions {
     var exposure : Float            = 5.0 //seconds
 }
 
-class Converter{
-    let consoleIO : ConsoleIO           = ConsoleIO()
+/// Handles command line parsing and coordinates the conversion of image files
+/// into `.photon` files.
+class PhotonFileConverter{
+    /// Utility for printing information to the console.
+    let consoleIO : ConsoleOutput = ConsoleOutput()
+
+    /// Options that control the conversion process.
     var conversionOptions : ConversionOptions = ConversionOptions()
-    var filesToConvert : [String]       = []
+
+    /// List of input file paths to convert.
+    var filesToConvert : [String] = []
     
-    func staticMode() {
+    /// Executes the conversion using command line arguments.
+    func run() {
         do {
             try readParameters()
             
             let files = Array(zip(filesToConvert, conversionOptions.output))
             var allFiles = filesToConvert.map{return ($0, $0)}
             allFiles.replaceSubrange(0..<files.count, with: files)
-            try files.forEach{try convert($0,into: $1)}
+            try files.forEach { try convertImage($0, to: $1) }
             
         } catch OptionError.invalidValue(let option) {
             consoleIO.writeMessage("01 Invalid value for \(option).", to: .error)
@@ -56,14 +65,18 @@ class Converter{
         
     }
     
-    private func convert(_ fileName:String, into newFile:String?=nil) throws{
-        //Get file path
-        let fileURL:URL = try getPath(to: fileName)
+    /// Converts a single image file into a Photon file.
+    /// - Parameters:
+    ///   - fileName: Path to the image that will be converted.
+    ///   - newFile: Optional name for the output Photon file.
+    private func convertImage(_ fileName: String, to newFile: String? = nil) throws {
+        // Get file path
+        let fileURL: URL = try getPath(to: fileName)
         //Fetch file data
         //let fileData = try Data(contentsOf: fileURL)
         
         
-        let fileData = try SGLImageConverter(fileURL, options: conversionOptions).convert()
+        let fileData = try SwiftGLPhotonConverter(fileURL, options: conversionOptions).convert()
         
         if let newFileName:String = newFile {
             let pathURL = fileURL.deletingLastPathComponent()
@@ -77,7 +90,7 @@ class Converter{
     }
     
     //
-    private func fileDecoderFactory(_ file:Data) -> ImageFileConverter?{
+    private func fileDecoderFactory(_ file: Data) -> PhotonImageConverter? {
         return nil
     }
     

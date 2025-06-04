@@ -46,6 +46,7 @@ extension UInt32{
     }
 }
 
+/// Utility for constructing Photon files from raw image data.
 class PhotonFile {
     private var templatePhotonFile1440x2560:Data {
         return try! Data(contentsOf: URL(fileURLWithPath: Bundle.main.path(forResource: "template", ofType: "photon") ?? ""))
@@ -110,8 +111,9 @@ class PhotonFile {
         }
     }
     
-    func data() -> Data{
-        var fileData:Data = self.header
+    /// Returns a complete Photon file combining the header with the template data.
+    func fileContent() -> Data {
+        var fileData: Data = self.header
         fileData.append(self.templatePhotonFile1440x2560)
         return fileData
     }

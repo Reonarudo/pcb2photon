@@ -18,8 +18,8 @@
 		OBJ_37 /* ImagePNG.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_22 /* ImagePNG.swift */; };
 		OBJ_38 /* Inflate.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_23 /* Inflate.swift */; };
 		OBJ_45 /* Package.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_24 /* Package.swift */; };
-		OBJ_51 /* ConsoleIO.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* ConsoleIO.swift */; };
-		OBJ_52 /* Converter.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* Converter.swift */; };
+               OBJ_51 /* ConsoleOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_9 /* ConsoleOutput.swift */; };
+               OBJ_52 /* PhotonFileConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_10 /* PhotonFileConverter.swift */; };
 		OBJ_53 /* ConverterUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_11 /* ConverterUtil.swift */; };
 		OBJ_54 /* ImageFileDecoders.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_12 /* ImageFileDecoders.swift */; };
 		OBJ_55 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_13 /* main.swift */; };
@@ -61,7 +61,7 @@
 		22C91E2C20B5804700F45D5A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		22C91E2D20B5804800F45D5A /* activityDiagram.pltuml */ = {isa = PBXFileReference; lastKnownFileType = text; path = activityDiagram.pltuml; sourceTree = "<group>"; };
 		22C91E2E20B580F900F45D5A /* result.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = result.png; sourceTree = "<group>"; };
-		OBJ_10 /* Converter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Converter.swift; sourceTree = "<group>"; };
+               OBJ_10 /* PhotonFileConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotonFileConverter.swift; sourceTree = "<group>"; };
 		OBJ_11 /* ConverterUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConverterUtil.swift; sourceTree = "<group>"; };
 		OBJ_12 /* ImageFileDecoders.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageFileDecoders.swift; sourceTree = "<group>"; };
 		OBJ_13 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -73,7 +73,7 @@
 		OBJ_23 /* Inflate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Inflate.swift; sourceTree = "<group>"; };
 		OBJ_24 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; name = Package.swift; path = "/Users/reox/Documents/Git Repos/pcb2photon/.build/checkouts/Image.git--6271664722653506445/Package.swift"; sourceTree = "<group>"; };
 		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
-		OBJ_9 /* ConsoleIO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleIO.swift; sourceTree = "<group>"; };
+               OBJ_9 /* ConsoleOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConsoleOutput.swift; sourceTree = "<group>"; };
 		"SGLImage::SGLImage::Product" /* SGLImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SGLImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		"pcb2photon::pcb2photon::Product" /* pcb2photon */ = {isa = PBXFileReference; lastKnownFileType = text; path = pcb2photon; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -181,8 +181,8 @@
 		OBJ_8 /* pcb2photon */ = {
 			isa = PBXGroup;
 			children = (
-				OBJ_9 /* ConsoleIO.swift */,
-				OBJ_10 /* Converter.swift */,
+                               OBJ_9 /* ConsoleOutput.swift */,
+                               OBJ_10 /* PhotonFileConverter.swift */,
 				OBJ_11 /* ConverterUtil.swift */,
 				OBJ_12 /* ImageFileDecoders.swift */,
 				OBJ_13 /* main.swift */,
@@ -311,8 +311,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
-				OBJ_51 /* ConsoleIO.swift in Sources */,
-				OBJ_52 /* Converter.swift in Sources */,
+                               OBJ_51 /* ConsoleOutput.swift in Sources */,
+                               OBJ_52 /* PhotonFileConverter.swift in Sources */,
 				22C91E2B20B4550400F45D5A /* PhotonFileHandler.swift in Sources */,
 				OBJ_53 /* ConverterUtil.swift in Sources */,
 				OBJ_54 /* ImageFileDecoders.swift in Sources */,
