@@ -56,28 +56,28 @@ class PhotonFile {
     }
     private var header:Data{
         get{
-            var sig:[UInt8] = [0x19,0x00,0xFD,0x12,0x01,0x00,0x00,0x00]
-            
-            let pcbThickness : Float        = 1.6 //mm
-            let exposure : Float            = 15.0 //seconds
-            
-            let printSizeX:Float = 68.04
-            let printSizeY:Float = 120.96
-            let printSizeZ:Float = 5
-            
-            let bottomExposureTime:Float = 0.0
-            let offTime:Float = 0.0
-            let numberOfBottomLayers:UInt32 = 0
-            let sizeX:UInt32 = 1440
-            let sizeY:UInt32 = 2560
-            
-            let numberOfLayers:UInt32 = 1
+            var sig:[UInt8] = PhotonConstants.headerMagic
+
+            let pcbThickness : Float        = PhotonConstants.pcbThickness
+            let exposure : Float            = PhotonConstants.exposure
+
+            let printSizeX:Float = PhotonConstants.printSizeX
+            let printSizeY:Float = PhotonConstants.printSizeY
+            let printSizeZ:Float = PhotonConstants.printSizeZ
+
+            let bottomExposureTime:Float = PhotonConstants.bottomExposureTime
+            let offTime:Float = PhotonConstants.offTime
+            let numberOfBottomLayers:UInt32 = PhotonConstants.numberOfBottomLayers
+            let sizeX:UInt32 = PhotonConstants.imageWidth
+            let sizeY:UInt32 = PhotonConstants.imageHeight
+
+            let numberOfLayers:UInt32 = PhotonConstants.numberOfLayers
             
             sig.append(contentsOf: printSizeX.asByteArray())
             sig.append(contentsOf: printSizeY.asByteArray())
             sig.append(contentsOf: printSizeZ.asByteArray())
             
-            sig.append(contentsOf: [0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00, 0x00,0x00,0x00,0x00]) // padding
+            sig.append(contentsOf: PhotonConstants.padding12)
             
             sig.append(contentsOf: pcbThickness.asByteArray())
             
@@ -92,23 +92,23 @@ class PhotonFile {
             sig.append(contentsOf: sizeX.asByteArray())
             sig.append(contentsOf: sizeY.asByteArray())
             
-            sig.append(contentsOf: [0x6C,0x00,0x00,0x00,0xAC,0xF0,0x00,0x00])
+            sig.append(contentsOf: PhotonConstants.unknownBlock1)
             
             sig.append(contentsOf: numberOfLayers.asByteArray())
             
 
-            sig.append(contentsOf: [0xD0,0xE0,0x00,0x00,0x00,0x00,0x00,0x00])
-            sig.append(contentsOf: [0x01,0x00,0x00,0x00])
+            sig.append(contentsOf: PhotonConstants.unknownBlock2)
+            sig.append(contentsOf: PhotonConstants.unknownBlock3)
             
-            sig.append(contentsOf: [0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00]) // padding
-            sig.append(contentsOf: [0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00]) // padding
-            sig.append(contentsOf: [0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00]) // padding
+            sig.append(contentsOf: PhotonConstants.padding8) // padding
+            sig.append(contentsOf: PhotonConstants.padding8) // padding
+            sig.append(contentsOf: PhotonConstants.padding8) // padding
             
-            sig.append(contentsOf: [0x33,0x04,0x00,0x00,0xE6,0x00,0x00,0x00])
-            sig.append(contentsOf: [0x8C,0x00,0x00,0x00,0x44,0xE0,0x00,0x00])
+            sig.append(contentsOf: PhotonConstants.unknownBlock4)
+            sig.append(contentsOf: PhotonConstants.unknownBlock5)
             
-            sig.append(contentsOf: [0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00]) // padding
-            sig.append(contentsOf: [0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00]) // padding
+            sig.append(contentsOf: PhotonConstants.padding8) // padding
+            sig.append(contentsOf: PhotonConstants.padding8) // padding
             
             return Data(bytes: sig)
         }
