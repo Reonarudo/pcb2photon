@@ -20,12 +20,14 @@ struct ConversionOptions {
     var exposure : Float            = 5.0 //seconds
 }
 
-class Converter{
+public class Converter{
     let consoleIO : ConsoleIO           = ConsoleIO()
     var conversionOptions : ConversionOptions = ConversionOptions()
     var filesToConvert : [String]       = []
+
+    public init() {}
     
-    func staticMode() {
+    public func staticMode() {
         do {
             try readParameters()
             

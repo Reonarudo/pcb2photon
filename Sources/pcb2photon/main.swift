@@ -8,6 +8,7 @@
 // Image to .photon file converter
 
 import Foundation
+import pcb2photonlib
 
 let converter = Converter()
 
