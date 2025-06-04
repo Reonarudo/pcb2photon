@@ -90,34 +90,34 @@ class SGLImageConverter: ImageFileConverter {
             }
             
         }
-        let imageData:Data = Data(bytes: buckets.map{$0.byte})
+        let imageData: Data = Data(buckets.map { $0.byte })
         var fileData:Data = PhotonFile().data()
         
         //Prepare and append imag array metadata
         var layerHeight = config.pcbThickness
-        let layerHeightData = Data(buffer: UnsafeBufferPointer(start: &layerHeight, count: 1))
+        let layerHeightData = withUnsafeBytes(of: &layerHeight) { Data($0) }
         fileData.append(layerHeightData)
         
         var expTime = config.exposure
-        let expTimeData = Data(buffer: UnsafeBufferPointer(start: &expTime, count: 1))
+        let expTimeData = withUnsafeBytes(of: &expTime) { Data($0) }
         fileData.append(expTimeData)
         
         var offTime = UInt32(0)
-        let offTimeData = Data(buffer: UnsafeBufferPointer(start: &offTime, count: 1))
+        let offTimeData = withUnsafeBytes(of: &offTime) { Data($0) }
         fileData.append(offTimeData)
         
-        var startPos = UInt32(fileData.count+24)
-        let startPosData = Data(buffer: UnsafeBufferPointer(start: &startPos, count: 1))
+        var startPos = UInt32(fileData.count + 24)
+        let startPosData = withUnsafeBytes(of: &startPos) { Data($0) }
         fileData.append(startPosData)
         
         var size = UInt32(imageData.count)
-        let sizeData = Data(buffer: UnsafeBufferPointer(start: &size, count: 1))
+        let sizeData = withUnsafeBytes(of: &size) { Data($0) }
         fileData.append(sizeData)
         
-        let padding = [UInt32(0),UInt32(0),UInt32(0),UInt32(0)]
-        padding.forEach{
+        let padding = [UInt32(0), UInt32(0), UInt32(0), UInt32(0)]
+        padding.forEach {
             var val = $0
-            let data = Data(buffer: UnsafeBufferPointer(start: &val, count: 1))
+            let data = withUnsafeBytes(of: &val) { Data($0) }
             fileData.append(data)
         }
         //Append image data
